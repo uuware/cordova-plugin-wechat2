@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-wechat2",
+  "name": "cordova-plugin-wechat-ex",
   "version": "3.1.0",
   "description": "A cordova plugin, a JS version of Wechat SDK with openCustomerServiceChat",
   "cordova": {
-    "id": "cordova-plugin-wechat2",
+    "id": "cordova-plugin-wechat-ex",
     "platforms": [
       "ios",
       "android"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xu-li/cordova-plugin-wechat2.git"
+    "url": "git+https://github.com/uuware/cordova-plugin-wechat-ex.git"
   },
   "keywords": [
     "cordova",
@@ -34,13 +34,16 @@
         }
     }
   },
+  "scripts": {
+    "npm-publish": "npm publish --access public"
+  },
   "dependencies":{
     "shelljs": "^0.5.3"
   },
-  "author": "xu.li <AthenaLightenedMyPath@gmail.com>",
+  "author": "uuware <uuware@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xu-li/cordova-plugin-wechat2/issues"
+    "url": "https://github.com/uuware/cordova-plugin-wechat-ex/issues"
   },
-  "homepage": "https://github.com/xu-li/cordova-plugin-wechat2#readme"
+  "homepage": "https://github.com/uuware/cordova-plugin-wechat-ex#readme"
 }

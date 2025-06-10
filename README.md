@@ -1,6 +1,9 @@
+This project is a fork of [cordova-plugin-wechat](https://github.com/xu-li/cordova-plugin-wechat), and add openCustomerServiceChat feature.
+
+
 ![Active](https://www.repostatus.org/badges/latest/active.svg)
-![Downloads](https://img.shields.io/npm/dt/cordova-plugin-wechat.svg)
-![version](https://img.shields.io/npm/v/cordova-plugin-wechat/latest.svg)
+![Downloads](https://img.shields.io/npm/dt/cordova-plugin-wechat-ex.svg)
+![version](https://img.shields.io/npm/v/cordova-plugin-wechat-ex/latest.svg)
 
 # 4.x
 
@@ -16,7 +19,7 @@ From version 3.0.0 of our plugin, we changed to the latest WeChat SDK. Before us
 
 If you don't want to use the new version features, you can fall back to version 3.0.0 prior
 
-# cordova-plugin-wechat
+# cordova-plugin-wechat-ex
 
 A cordova plugin, a JS version of Wechat SDK
 
