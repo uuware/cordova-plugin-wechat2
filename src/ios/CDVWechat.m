@@ -591,6 +591,21 @@ static int const MAX_THUMBNAIL_SIZE = 320;
     }];
 }
 
+-  (void)openCustomerServiceChat:(CDVInvokedUrlCommand *)command
+{
+    NSDictionary *params = [command.arguments objectAtIndex:0];
+    WXOpenCustomerServiceChatReq *launchMiniProgramReq = [WXOpenCustomerServiceChatReq object];
+    launchMiniProgramReq.corpId = [params objectForKey:@"corpId"];
+    launchMiniProgramReq.url = [params objectForKey:@"url"];
+    [WXApi sendReq:launchMiniProgramReq completion:^(BOOL success) {
+        if(success) {
+             self.currentCallbackId = command.callbackId;
+        } else {
+            [self failWithCallbackID:command.callbackId withMessage:@"打开请求失败"];
+        }
+    }];
+}
+
 - (BOOL)handleUserActivity:(NSUserActivity *)userActivity {
    return [WXApi handleOpenUniversalLink:userActivity delegate:self];
 }

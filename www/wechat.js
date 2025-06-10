@@ -187,6 +187,23 @@ module.exports = {
      */
     openMiniProgram: function (params, onSuccess, onError) {
         exec(onSuccess, onError, "Wechat", "openMiniProgram", [params]);
-    }
+    },
+
+    /**
+     * openCustomerServiceChat exq:app opens wechat customer service chat
+     *
+     * @example
+     * <code>
+     * params: corpId, url  all required
+     * Wechat.openCustomerServiceChat(params, function (data) {
+     *     alert(data.extMsg);
+     * }, function (reason) {
+     *     alert("Failed: " + reason);
+     * });
+     * </code>
+     */
+    openCustomerServiceChat: function (params, onSuccess, onError) {
+        exec(onSuccess, onError, "Wechat", "openCustomerServiceChat", [params]);
+    },
 
 };

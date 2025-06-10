@@ -982,6 +982,28 @@ typedef void(^WXLogBolock)(NSString *log);
 @end
 
 
+
+#pragma mark - WXOpenCustomerServiceChatReq
+
+/*! @brief WXOpenCustomerServiceChatReq对象, 可实现通过sdk拉起微信小程序
+ *
+ * @note 返回的WXOpenCustomerServiceChatReq对象是自动释放的
+ */
+@interface WXOpenCustomerServiceChatReq : BaseReq
+
++ (WXOpenCustomerServiceChatReq *)object;
+
+/** corpId */
+@property (nonatomic, copy) NSString *corpId;
+
+/** url
+ */
+@property (nonatomic, copy, nullable) NSString *url;
+
+@end
+
+
+
 #pragma mark - WXOpenBusinessViewReq
 /*! @brief WXOpenBusinessViewReq对象, 可实现第三方通知微信启动，打开业务页面
  *

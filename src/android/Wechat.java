@@ -217,9 +217,42 @@ public class Wechat extends CordovaPlugin {
             return chooseInvoiceFromWX(args, callbackContext);
         } else if (action.equals("openMiniProgram")) {
             return openMiniProgram(args, callbackContext);
+        } else if (action.equals("openCustomerServiceChat")) {
+            return openCustomerServiceChat(args, callbackContext);
         }
 
         return false;
+    }
+
+    protected boolean openCustomerServiceChat(CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
+        currentCallbackContext = callbackContext;
+        String appId = getAppId(preferences);
+        ; // 填应用AppId
+        IWXAPI api = WXAPIFactory.createWXAPI(cordova.getActivity(), appId);
+
+        final JSONObject params;
+        try {
+            params = args.getJSONObject(0);
+        } catch (JSONException e) {
+            callbackContext.error(ERROR_INVALID_PARAMETERS);
+            return true;
+        }
+
+        try {
+            String corpId = params.getString("corpId");
+            String url = params.getString("url");
+
+            WXOpenCustomerServiceChat.Req req = new WXOpenCustomerServiceChat.Req();
+            req.corpId = corpId;
+            req.url = url;
+
+            api.sendReq(req);
+        } catch (JSONException e) {
+            callbackContext.error(ERROR_INVALID_PARAMETERS);
+            Log.e(TAG, e.getMessage());
+        }
+
+        return true;
     }
 
     protected boolean share(CordovaArgs args, final CallbackContext callbackContext)
