@@ -1,5 +1,43 @@
 This project is a fork of [cordova-plugin-wechat](https://github.com/xu-li/cordova-plugin-wechat), and add openCustomerServiceChat feature.
 
+在Capacitor项目中，虽然AndroidManifest.xml文件会被创建，并且WXEntryActivity和WXPayEntryActivity也会被添加到AndroidManifest.xml文件中，但是微信 SDK 不会回调这个路径，因为它默认调用的是主应用包路径下的 com.xxxx.wxapi.WXEntryActivity。
+还有
+<source-file src="src/android/Wechat.java" target-dir="src/xu/li/cordova/wechat" />
+在 Capacitor 中，Cordova 插件的 plugin.xml 并不能直接把文件拷贝到 主应用目录下。这是因为：
+Capacitor 不允许 Cordova 插件写入主应用源码（即 app module）下的任何目录。
+可以用postinstall npm 脚本来复制文件。
+但现在建议手工一次性拷贝。
+需要把三个Java文件拷贝到主应用包路径下的 wxapi目录下，并添加
+
+        <!-- 新增：微信 WXEntryActivity -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wx1234567890abcdef" />
+            </intent-filter>
+        </activity>
+
+        <!-- 新增：微信 WXPayEntryActivity -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wx1234567890abcdef" />
+            </intent-filter>
+        </activity>
+
+
+到AndroidManifest.xml文件中。其中android:scheme是微信appid。
+
+
 
 ![Active](https://www.repostatus.org/badges/latest/active.svg)
 ![Downloads](https://img.shields.io/npm/dt/cordova-plugin-wechat-ex.svg)
